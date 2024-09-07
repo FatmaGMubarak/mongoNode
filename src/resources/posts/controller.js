@@ -46,7 +46,7 @@ exports.deletePost = async (req,res,next)=>{
     const id = req.params.id;
     try{
         const post = await Post.findByIdAndDelete(id)
-        if(req.user_id !== post.user_id){
+        if(req.user_id !== post.user_id.toString()){
             res.status(400).json({msg:"Cannot do this action"})
         }
         res.status(200).json({msg:"The post has been deleted successfully"})
@@ -60,7 +60,7 @@ exports.updatePost = async (req,res,next)=>{
     const {title,body,tags} = req.body;
     try{
         const post = await Post.findById(id);
-        if(req.user_id !== post.user_id){
+        if(req.user_id !== post.user_id.toString()){
             res.status(400).json({msg:"Cannot do this action"})
             return
         }
