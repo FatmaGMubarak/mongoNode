@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const User = require("../users/model");
 const postSchema = new mongoose.Schema(
     {
         title:{
@@ -13,6 +14,10 @@ const postSchema = new mongoose.Schema(
             type:Array,
         default  :[] 
          },
+         user_id:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
+         }
     },
     {timestamps:true}
 )

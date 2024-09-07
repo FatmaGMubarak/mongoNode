@@ -12,6 +12,8 @@ app.use(express.json())
 app.use(morgan("dev"))
 app.use(cors())
 
+
+
 require("./src/routes")(app);
 app.all("*",(req,res,next)=>{
     res.status(200).json({msg:"Error not found"})
